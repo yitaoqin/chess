@@ -1,6 +1,11 @@
 package com.yitao.chess.bean;
 
+import com.yitao.chess.util.IdUtil;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
@@ -9,15 +14,21 @@ import java.util.List;
  * creat_user: qinyitao
  * creat_date: 18/3/16 15:00
  **/
-@Data
+@Getter
+@ToString()
 public class ChessPlayer {
 
-    //ID、是否可走（走棋方式待定？）、持子颜色、持有棋子列表
-    private String Id;
+    //ID 空字符意思是没有被选中
+    private String Id="";
     //持子颜色
-    private ColorEnum colorEnum;
+    private ColorEnum colorEnum;//持子颜色
     // 持有棋子列表
     private List<ChessPieces> chessPiecesList;
+
+    public ChessPlayer( ColorEnum colorEnum) {
+        this.colorEnum = colorEnum;
+        chessPiecesList= IdUtil.pairChess(colorEnum);
+    }
 
     /**
      * 棋手走子，由currentIndex走到targetIndex，选择的棋子来决定怎么走，targetIndex上有无棋子，共同决定走子规则。

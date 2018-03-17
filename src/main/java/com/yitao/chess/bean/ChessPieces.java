@@ -1,5 +1,6 @@
 package com.yitao.chess.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  * creat_date: 18/3/16 14:59
  **/
 @Data
+@AllArgsConstructor
 public class ChessPieces {
     //ID、颜色、名称、等级、是否选中、是否翻开
     private String Id;

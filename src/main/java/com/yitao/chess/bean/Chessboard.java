@@ -1,5 +1,6 @@
 package com.yitao.chess.bean;
 
+import com.yitao.chess.exception.ChessException;
 import lombok.Data;
 
 /**
@@ -14,9 +15,14 @@ public class Chessboard {
     private int row;
     private ChessPieces[] board;
 
-    public Chessboard(int column,int row){
+    public Chessboard(int row,int column){
         this.column=column;
         this.row=row;
-        board=new ChessPieces[column*row];
+    }
+
+    public void setBoard(ChessPieces[] board)throws ChessException {
+        if(board.length != row*column)
+            throw new ChessException("棋盘异常");
+        this.board = board;
     }
 }
