@@ -1,5 +1,7 @@
 package com.yitao.chess.bean;
 
+import com.yitao.chess.myenum.ChessEnum;
+import com.yitao.chess.myenum.ColorEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -16,8 +18,7 @@ public class ChessPieces {
     private ColorEnum colorEnum;
     private ChessEnum chess;
 
-    //true 选中，false 未选中
-    private boolean checked;
+
     //true 正面，false 背面
     private boolean over;
 

@@ -1,11 +1,9 @@
 package com.yitao.chess.bean;
 
+import com.yitao.chess.myenum.ColorEnum;
 import com.yitao.chess.util.IdUtil;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 

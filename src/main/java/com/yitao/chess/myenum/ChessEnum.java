@@ -1,4 +1,4 @@
-package com.yitao.chess.bean;
+package com.yitao.chess.myenum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
