@@ -3,6 +3,7 @@ package com.yitao.chess.bean;
 import com.yitao.chess.myenum.ColorEnum;
 import com.yitao.chess.util.IdUtil;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ChessPlayer {
 
     //ID 空字符意思是没有被选中
+    @Setter
     private String Id="";
     //持子颜色
     private ColorEnum colorEnum;//持子颜色

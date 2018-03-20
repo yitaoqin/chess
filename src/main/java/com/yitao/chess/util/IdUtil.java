@@ -94,8 +94,8 @@ public class IdUtil {
      * @throws RuleException 不在一条直线
      */
     public static void chessboard(int index,int targetIndex){
-        if(!IdUtil.leftOrRight(index,targetIndex) || !IdUtil.upOrDown(index, targetIndex) ){
-            throw new RuleException("只可在一条直线上移动");
+        if(!IdUtil.leftOrRight(index,targetIndex) && !IdUtil.upOrDown(index, targetIndex)){
+            throw new RuleException("只可竖直/水平直线上移动");
         }
     }
 
