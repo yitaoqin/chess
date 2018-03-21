@@ -69,7 +69,7 @@ public class PlayerGuang implements Runnable {
     private boolean dd(Chessboard cs, ColorEnum c) {
         Random random = new Random();
         try {
-            RuleExecutor.action(cs, random.nextInt(32), random.nextInt(32), c);
+            //RuleExecutor.action(cs, random.nextInt(32), random.nextInt(32), c);
         } catch (RuleException e) {
             return true;
         }

@@ -68,7 +68,7 @@ public class PlayerXionger implements Runnable {
     private boolean dd(Chessboard c, ColorEnum f) {
         Random random = new Random();
         try {
-            RuleExecutor.action(c, random.nextInt(32), random.nextInt(32), f);
+            //RuleExecutor.action(c, random.nextInt(32), random.nextInt(32), f);
         } catch (RuleException e) {
             return true;
         }

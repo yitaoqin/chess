@@ -14,24 +14,16 @@ import static com.yitao.chess.myenum.ChessEnum.SHUAI;
 
 /**
  * 移动棋子：包含 移动
+ * 测试：翻开的、空的位置、相邻
  */
 public class Yidong implements Rule {
     @Override
     public void action(Chessboard chessboard, int index, int targetIndex) {
         ChessPieces pieces=chessboard.getBoard()[index];
         ChessPieces targetPieces=chessboard.getBoard()[targetIndex];
-        //移动
-        if(targetPieces != null){
-            throw new RuleException("不可以移动到有子的位置上");
-        }
+        IdUtil.checkPiecess(pieces);
+        if(targetPieces!=null)throw new RuleException("只可以移动到空的位置");
         chessboard.getBoard()[targetIndex]=pieces;
         chessboard.getBoard()[index]=null;
-
-
     }
-
-
-
-
-
 }

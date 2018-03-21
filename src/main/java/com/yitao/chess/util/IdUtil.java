@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static com.yitao.chess.myenum.ChessEnum.PAO;
+
 public class IdUtil {
 
 
@@ -187,6 +189,42 @@ public class IdUtil {
             list.add(down);
         }
         return list;
+    }
+
+    /**
+     * 检查棋子翻开的
+     * @param pieces
+     */
+    public static void checkPiecess(ChessPieces pieces){
+        if(!pieces.isOver())throw new RuleException("请选择翻开的棋子");
+
+    }
+
+    /**
+     * 除了炮以外，其它棋子均需在相邻位置操作,不可以自相残杀,只可以吃已经翻开的子
+     * @param pieces
+     * @param targetPieces
+     * @param index
+     * @param targetIndex
+     * @throws RuleException 不可以自相残杀 || 只可以吃已经翻开的子
+     */
+    public static void checkYidong(ChessPieces pieces,ChessPieces targetPieces,int index, int targetIndex){
+        checkPiecess(pieces);
+        if(pieces.getChess()!=PAO ){
+            around(index,targetIndex);
+            if(targetPieces ==null)throw new RuleException("请选择目标棋子");
+            if(!targetPieces.isOver())
+                throw new RuleException("只可以吃已经翻开的子");
+            if(pieces.getColorEnum() == targetPieces.getColorEnum())
+                throw new RuleException("不可以自相残杀");
+        }
+    }
+
+    //相邻位置
+    private static void around(int index,int target){
+        if(!IdUtil.aroundIndex(index).contains(target)){
+            throw new RuleException("不是相邻位置");
+        }
     }
 
     public static void main(String[] args) {
