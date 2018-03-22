@@ -22,6 +22,7 @@ public class Yidong implements Rule {
         ChessPieces pieces=chessboard.getBoard()[index];
         ChessPieces targetPieces=chessboard.getBoard()[targetIndex];
         IdUtil.checkPiecess(pieces);
+        IdUtil.around(index,targetIndex);
         if(targetPieces!=null)throw new RuleException("只可以移动到空的位置");
         chessboard.getBoard()[targetIndex]=pieces;
         chessboard.getBoard()[index]=null;

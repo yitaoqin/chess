@@ -221,7 +221,7 @@ public class IdUtil {
     }
 
     //相邻位置
-    private static void around(int index,int target){
+    public static void around(int index,int target){
         if(!IdUtil.aroundIndex(index).contains(target)){
             throw new RuleException("不是相邻位置");
         }

@@ -89,15 +89,15 @@ public class Game2 {
         Game2 g = new Game2();
         g.kaiJu();
         g.display();
-        int i=0;
-        String type;
-        int index,targetIndex;
+        int i=1;
+//        String type;
+        int index;
         while (RuleExecutor.win(g.chessboard.getBoard())){
             if(i%2==0){
                 if(g.xe==null){
                     System.out.println("您还没有选择颜色，请选择幡子的位置： ");
                     index=sc.nextInt();
-                    if(g.chessboard.getBoard()[i].getColorEnum()==ColorEnum.RED){
+                    if(g.chessboard.getBoard()[index].getColorEnum()==ColorEnum.RED){
                         g.xe=ColorEnum.RED;
                         g.gt=ColorEnum.BLACK;
                     }else{
@@ -107,9 +107,10 @@ public class Game2 {
                     RuleExecutor.action(g.chessboard, index, index, g.xe,"f");
                     System.out.println("xe="+ g.xe+";g.gt="+g.gt);
                 }else{
-                    boolean d = true;
+                    g.input(g,sc,g.xe);
+                    /*boolean d = true;
                     while (d) {
-                        System.out.println(g.xe+"xe选择走棋方式 :c-吃子，f-翻子，d-兑子，y-移动 ");
+                        System.out.println(g.xe+",xe选择走棋方式 :c-吃子，f-翻子，d-兑子，y-移动 ");
                         type=sc.next();
                         System.out.println("选择棋子，输入数字 : ");
                         index=sc.nextInt();
@@ -120,24 +121,26 @@ public class Game2 {
                             targetIndex=sc.nextInt();
                         }
                         d = g.loop(g.chessboard,index,targetIndex, g.xe,type);
-                    }
+                    }*/
                 }
                 g.display();
             }else {
                 if(g.gt==null){
                     System.out.println("您还没有选择颜色，请选择幡子的位置： ");
                     index=sc.nextInt();
-                    if(g.chessboard.getBoard()[i].getColorEnum()==ColorEnum.RED){
-                        g.xe=ColorEnum.BLACK;
+                    if(g.chessboard.getBoard()[index].getColorEnum()==ColorEnum.RED){
                         g.gt=ColorEnum.RED;
+                        g.xe=ColorEnum.BLACK;
                     }else{
-                        g.xe=ColorEnum.RED;
                         g.gt=ColorEnum.BLACK;
+                        g.xe=ColorEnum.RED;
 
                     }
                     RuleExecutor.action(g.chessboard, index, index, g.gt,"f");
+                    System.out.println("xe="+ g.xe+";g.gt="+g.gt);
                 }else{
-                    boolean d = true;
+                    g.input(g,sc,g.gt);
+                    /*boolean d = true;
                     while (d) {
                         System.out.println(g.gt+"gt选择走棋方式 :c-吃子，f-翻子，d-兑子，y-移动 ");
                         type=sc.next();
@@ -150,7 +153,7 @@ public class Game2 {
                             targetIndex=sc.nextInt();
                         }
                         d = g.loop(g.chessboard,index,targetIndex, g.gt,type);
-                    }
+                    }*/
                 }
                 g.display();
             }
@@ -169,4 +172,24 @@ public class Game2 {
         }
         return false;
     }
+
+    private void input(Game2 g,Scanner sc,ColorEnum colorEnum){
+        String type;
+        int index,targetIndex;
+        boolean d = true;
+        while (d) {
+            System.out.println(colorEnum+"选择走棋方式 :c-吃子，f-翻子，d-兑子，y-移动 ");
+            type=sc.next();
+            System.out.println("选择棋子，输入数字 : ");
+            index=sc.nextInt();
+            if("f".equals(type)){
+                targetIndex=index;
+            }else {
+                System.out.println("目标位置，输入数字 : ");
+                targetIndex=sc.nextInt();
+            }
+            d = g.loop(g.chessboard,index,targetIndex, colorEnum,type);
+        }
+    }
+
 }
